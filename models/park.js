@@ -36,6 +36,24 @@ class Park {
         }
         return dinosOfSpecies
     }
+
+    calculateTotalVisitors() {
+        let total = 0
+        for (let dino of this.dinosaurCollection) {
+            total += dino.guestsAttractedPerDay
+        }
+        return total
+    }
+
+    calculateTotalVisitorsPerYear() {
+        let total = this.calculateTotalVisitors() * 365
+        return total
+    }
+
+    calculateTotalRevenue() {
+        let total = this.calculateTotalVisitorsPerYear() * 10
+        return total
+    }
 }
 
 module.exports = Park
