@@ -26,6 +26,16 @@ class Park {
         }
         return bestDino
     }
+
+    findSpecies(species) {
+        const dinosOfSpecies = []
+        for (let dino of this.dinosaurCollection) {
+            if (dino.species == species) {
+                dinosOfSpecies.push(dino)
+            }
+        }
+        return dinosOfSpecies
+    }
 }
 
 module.exports = Park
