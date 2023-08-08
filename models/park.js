@@ -8,6 +8,10 @@ class Park {
     addDino(dino) {
         this.dinosaurCollection.push(dino)
     }
+
+    removeDino(dino) {
+        this.dinosaurCollection.pop()
+    }
 }
 
 module.exports = Park
