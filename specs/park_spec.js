@@ -7,9 +7,9 @@ describe('Park', function() {
   let park;
 
   beforeEach(function () {
-    dino1 = new Dinosaur("velocaraptor", "meat", 300),
-    dino2 = new Dinosaur("teradactile", "fish", 600),
-    dino3 = new Dinosaur("long neck boys", "plants", 800),
+    dino1 = new Dinosaur("velocaraptor", "meat", 300)
+    dino2 = new Dinosaur("teradactile", "fish", 600)
+    dino3 = new Dinosaur("long neck boys", "plants", 800)
     dino4 = new Dinosaur("t-rex", "metal gurus", 50)
     collection = [
       dino1,
@@ -78,4 +78,21 @@ describe('Park', function() {
     const actual = park.calculateTotalRevenue()
     assert.strictEqual(actual, 6387500)
   });
+
+  it('should be able to remove all the dinos of a specific species', function() {
+    const dino5 = new Dinosaur("t-rex", "People", 5)
+    park.addDino(dino5)
+    park.removeSpecies("t-rex")
+    const actual = park.dinosaurCollection
+    const expected = [dino1, dino2, dino3]
+    assert.deepStrictEqual(actual, expected)
+  })
+
+  it('should be able to make an object containing each diet type and the number of dinos', function() {
+    const dino5 = new Dinosaur("t-rex", "metal gurus", 5)
+    park.addDino(dino5)
+    const actual = park.dietTypes()
+    const expected = {"meat": 1, "fish": 1, "plants": 1, "metal gurus": 2}
+    assert.deepStrictEqual(actual, expected)
+  })
 });

@@ -18,8 +18,6 @@ class Park {
         for (let i = 0; i < this.dinosaurCollection.length - 1; i++) {
             let thisDino = this.dinosaurCollection[i].guestsAttractedPerDay
             let nextDino = this.dinosaurCollection[i + 1].guestsAttractedPerDay
-            console.log(thisDino)
-            console.log(nextDino)
             if (thisDino > nextDino && thisDino > bestDino) {
                 bestDino = this.dinosaurCollection[i]
             }
@@ -53,6 +51,31 @@ class Park {
     calculateTotalRevenue() {
         let total = this.calculateTotalVisitorsPerYear() * 10
         return total
+    }
+
+    removeSpecies(species) {
+        let dinosLeft = []
+        for (let dino of this.dinosaurCollection) {
+            if (dino.species !==  species) {
+                dinosLeft.push(dino)
+            }
+        }
+
+        this.dinosaurCollection = dinosLeft
+
+    }
+
+    dietTypes() {
+        let dinoDiets = {}
+        for (let dino of this.dinosaurCollection) {
+            if (dino.diet in dinoDiets) {
+                dinoDiets[dino.diet] += 1
+            }
+            else {
+                dinoDiets[dino.diet] = 1
+            }
+        }
+        return dinoDiets
     }
 }
 
